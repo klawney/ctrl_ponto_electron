@@ -1,0 +1,62 @@
+body {
+  margin: 0;
+  font-size: 18px;
+  font-family: sans-serif;
+  background-color: #967df5;
+}
+table,
+th,
+td {
+  border: solid 1px;
+  border-radius: 3px;
+  /* font-family: Georgia, 'Times New Roman', Times, serif; */
+  border-collapse: collapse;
+}
+th,
+td {
+  width: 20%;
+}
+input {
+  margin: 5px;
+  border-radius: 5px;
+  font-size: larger;
+  color: dimgray;
+  padding-left: 1rem;
+}
+button {
+  margin: 5px;
+  border-radius: 5px;
+  font-size: larger;
+  box-shadow: 3pt;
+  background-color:#059425;
+  color: #fff;
+}
+.btnExcluir{
+  background-color: rgb(158, 9, 44);
+  font-size: x-small;
+  box-shadow: none;
+  float: right;
+  margin: 5px;
+}
+#container {
+  margin: 0 auto;
+  width: 90%;
+}
+#sipon {
+  background-color: black;
+  color: #00cc00;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  /* box-shadow: 5px 5px 5px #333; */
+}
+.info>p{
+  margin: 3px auto;
+}
+.alerta {
+  padding: 5px;
+  text-align: center;
+  color: yellow;
+  font-size: 1.1rem;
+  background-color: rgb(71, 71, 71);
+}

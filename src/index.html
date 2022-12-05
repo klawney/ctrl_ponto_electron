@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css"> 
+    <title>HoradoPonto</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Controla Ponto <small id="hoje">__/__/____</small></h1>
+        
+        <form id="formH">
+
+            <label for="entrada">Hora do registro:<input id="entrada" type="time" ></label>   
+            <button id="btnEnviar">Enviar</button>
+            <button type="reset" id="btnDesfaz">Desfazer</button>
+        </form>
+        <p id="msg_erro" class="alerta"></p>
+        <div id="sipon">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entrada</th>
+                        <th>Sai Interv.</th>
+                        <th>Volta Interv.</th>
+                        <th>Saida</th>
+                        <!-- <th>status</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="linhaRegistro">
+                        <td>__:__</td>
+                        <td>__:__</td>
+                        <td>__:__</td>
+                        <td>__:__</td>
+                        <!-- <td>status</td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="info">
+            <p></p>
+            <p >Tempo decorrido: <b><span id="tempo_trabalho">08:00:00</span></b></p>
+            <p >Tempo restante da sua jornada: <b><span id="regressiva">07:59:59</span></b></p>
+            <p >Tempo de Hora Extra: <b><span id="tempo_he">00:00:00</span></b></p>
+        </div>
+        <p class="alerta">A T E N Ç Ã O  -  Esta ferramenta não faz registros no SIPON</p>
+    </div>
+    <script src="./ponto.js" ></script>
+    <script src="./renderer.js" ></script>
+</body>
+</html>

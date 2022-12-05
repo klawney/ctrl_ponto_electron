@@ -1,0 +1,17 @@
+{
+  "name": "controle_de_ponto",
+  "version": "beta1.0.0",
+  "description": "Controle pessoal de ponto",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^6.1.12",
+    "electron-settings": "^4.0.2"
+  }
+}
