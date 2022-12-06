@@ -1,6 +1,10 @@
 
 const hoje = new Date()
 
+function reconfigurarPonto(configPonto) {
+    localStorage.setItem("configPonto", JSON.stringify(configPonto))
+}
+
 let ponto = {
     "data": null,
     "registros": [],

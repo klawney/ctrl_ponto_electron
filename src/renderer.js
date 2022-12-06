@@ -9,6 +9,22 @@ const elTempoTrabalho = document.getElementById("tempo_trabalho")
 const elRegressiva = document.getElementById("regressiva")
 const elTtempoHE = document.getElementById("tempo_he")
 
+function name(params) {
+    let configPonto = {
+        "jornada":6,
+        "intervalo" :30,
+        "he_autorizada":false,
+        "qtde_he" :null,
+        "saldo_he" :null
+    }
+}
+
+
+const JORNADA = 8 * 3600000
+const MAX_HE = 2 * 3600000
+let tempoEsgotado = false
+let pausa = false
+
 inputHora.value = getHoraCerta()
 inputHora.setAttribute("max",getHoraCerta())
 strDate.textContent = hoje.toLocaleDateString('pt-BR')
@@ -26,8 +42,7 @@ inputHora.addEventListener('change',(ev)=>{
         setTimeout(() => {
             msgErroInput.hidden = true
             msgErroInput.textContent = ""
-        }, 3000);
-        
+        }, 3000);   
     }
 })
 
@@ -76,12 +91,29 @@ setInterval(() => {
 
 let count  = 1000
 
-setInterval(() => {
-    elTempoTrabalho.textContent = msToHHmmss((count))
-    elRegressiva.textContent =  msToHHmmss(28800000 - count)
-    elTtempoHE.textContent =  msToHHmmss(7200000)
-    count += 1000
-}, 1000);
+const refleshTimers =  setInterval( atualizaTimers, 1000);
+
+function atualizaTimers () {
+    if(pausa) return
+    if(count <= (JORNADA + MAX_HE)){
+        if(count <= JORNADA ){
+            elTempoTrabalho.textContent = msToHHmmss((count))
+            elRegressiva.textContent =  msToHHmmss(JORNADA - count)
+        }
+        else {
+            elTtempoHE.textContent =  msToHHmmss(count - JORNADA)
+        }          
+        count += 1000
+    } else 
+    {
+        alert("TEMPO ESGOTADO")
+        count = 0
+        clearInterval(refleshTimers)
+    }
+}
+
+
+
 
 // setInterval(() => {
 //     console.log( temporizador())

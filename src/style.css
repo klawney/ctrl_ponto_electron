@@ -38,6 +38,12 @@ button {
   float: right;
   margin: 5px;
 }
+#controles{
+  margin: 20px;
+  padding: 10px ;
+  width: 50%;
+  background-color: #b19ff8;
+}
 #container {
   margin: 0 auto;
   width: 90%;
@@ -50,8 +56,12 @@ button {
   border-radius: 10px;
   /* box-shadow: 5px 5px 5px #333; */
 }
-.info>p{
+.info> p{
   margin: 3px auto;
+}
+.info>p span{
+  float: right;
+  color  :#066806
 }
 .alerta {
   padding: 5px;
