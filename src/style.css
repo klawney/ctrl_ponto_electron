@@ -38,6 +38,9 @@ button {
   float: right;
   margin: 5px;
 }
+#btnConfig{
+  float: right;
+}
 #controles{
   margin: 20px;
   padding: 10px ;

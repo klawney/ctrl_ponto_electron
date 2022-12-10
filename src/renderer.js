@@ -2,26 +2,31 @@ const strDate = document.getElementById("hoje")
 const inputHora = document.getElementById("entrada")
 const btnEnviar = document.getElementById("btnEnviar")
 const btnDesfaz = document.getElementById("btnDesfaz")
+const btnConfig = document.getElementById("btnConfig")
+const btnSalvarConfig = document.getElementById("salvar_config")
 const linhaRegistro = document.getElementById("linhaRegistro")
 const msgErroInput = document.getElementById("msg_erro")
+const divControles = document.getElementById("controles")
+const divContainer = document.getElementById("container")
 
 const elTempoTrabalho = document.getElementById("tempo_trabalho")
 const elRegressiva = document.getElementById("regressiva")
 const elTtempoHE = document.getElementById("tempo_he")
 
-function name(params) {
-    let configPonto = {
-        "jornada":6,
-        "intervalo" :30,
-        "he_autorizada":false,
-        "qtde_he" :null,
-        "saldo_he" :null
-    }
+
+//.then((config)=>{
+ocultarFormConfig() 
+// console.log(configPonto);
+// console.log(configPonto.default);
+
+if(configPonto.default){
+    exibirFormConfig()
 }
 
 
-const JORNADA = 8 * 3600000
-const MAX_HE = 2 * 3600000
+const JORNADA = configPonto.jornada * 3600000
+const MAX_HE = configPonto.he_autorizada ? configPonto.qtde_he * 3600000 : 0
+
 let tempoEsgotado = false
 let pausa = false
 
@@ -45,6 +50,13 @@ inputHora.addEventListener('change',(ev)=>{
         }, 3000);   
     }
 })
+btnConfig.addEventListener('click',(ev)=>{
+    ev.preventDefault()
+    if(divControles.hidden ){
+        exibirFormConfig()
+    }
+    else ocultarFormConfig()
+})
 
 btnEnviar.addEventListener("click",(ev)=>{
     ev.preventDefault()
@@ -55,10 +67,37 @@ btnEnviar.addEventListener("click",(ev)=>{
 
 btnDesfaz.addEventListener("click",(ev)=>{
     ev.preventDefault()
-    //console.log(inputHora.value);
     limpaUltimoRegistro()
     atualizaTbl()
 })
+
+document.getElementById('he_auto').addEventListener('change',(ev)=>{
+    document.querySelector('input[name="qtde_he"]').checked = ev.target.checked
+})
+
+btnSalvarConfig.addEventListener('click',(ev)=>{
+    ev.preventDefault()
+    let he_auto = document.getElementById('he_auto').checked
+    let obj = {
+        "jornada": document.querySelector('input[name="jornada"]:checked').value,
+        "intervalo" : document.querySelector('input[name="intervalo"]:checked').value,
+        "he_autorizada": he_auto,
+        "qtde_he" : he_auto ? document.querySelector('input[name="qtde_he"]:checked').value : null,
+        "saldo_he" :he_auto ? document.querySelector('input[name="saldo_he"]').value : null,
+        "default" : false
+    }
+    reconfigurarPonto(obj)
+    ocultarFormConfig()
+})
+
+function exibirFormConfig() {
+    divControles.hidden = false
+    divContainer.hidden = true
+}
+function ocultarFormConfig() {
+    divControles.hidden = true
+    divContainer.hidden = false
+}
 
 function atualizaTbl() {
  
