@@ -8,8 +8,39 @@
     <title>HoradoPonto</title>
 </head>
 <body>
-    <div id="container">
-        <h1>Controla Ponto <small id="hoje">__/__/____</small></h1>
+    <h1>Controla Ponto <small id="hoje">__/__/____</small> </h1> 
+    <button id="btnConfig" title="Configurações">*</button>
+    <div id="controles" >
+        <h2>Configurações</h2>
+        <form >
+            <fieldset > <legend>Jornada de:</legend>
+                <input type="radio" id="j6h" name="jornada" value="6" checked>
+                <label for="j6h">6 horas</label> 
+                <input type="radio" id="j8h" name="jornada" value="8">
+                <label for="j8h">8 horas</label> 
+            </fieldset>
+            <fieldset  > <legend>Intervalo de:</legend>
+                <input type="radio" id="inter30" name="intervalo" value="0.5" checked>
+                <label for="inter30">30 min</label> 
+                <input type="radio" id="inter1h" name="intervalo" value="1" >
+                <label for="inter1h">1 hora</label> 
+                <input type="radio" id="inter2h" name="intervalo" value="2" >
+                <label for="inter2h">2 horas </label> 
+            </fieldset>
+            <fieldset  > <legend>Hora Extra / Banco Horas:</legend>
+                <input type="checkbox" id="he_auto" name="he_autorizada">
+                <label for="he_auto">HE Autorizada </label> 
+                <input type="radio" id="HE1h" name="qtde_he" value="1" >
+                <label for="HE1h">1 hora</label> 
+                <input type="radio" id="HE2h" name="qtde_he" value="2" >
+                <label for="HE2h">2 horas </label> 
+                <label >Saldo Autorizado: <input type="time" name="saldo_he" value="06:00"></label> 
+            </fieldset>
+            <button id="salvar_config">Salvar</button>
+        </form>
+    </div>
+
+    <div id="container" >
         
         <form id="formH">
 
@@ -17,7 +48,7 @@
             <button id="btnEnviar">Enviar</button>
             <button type="reset" id="btnDesfaz">Desfazer</button>
         </form>
-        <p id="msg_erro" class="alerta"></p>
+        <p id="msg_erro" hidden class="alerta"></p>
         <div id="sipon">
 
             <table>
@@ -41,8 +72,8 @@
                 </tbody>
             </table>
         </div>
+
         <div class="info">
-            <p></p>
             <p >Tempo decorrido: <b><span id="tempo_trabalho">08:00:00</span></b></p>
             <p >Tempo restante da sua jornada: <b><span id="regressiva">07:59:59</span></b></p>
             <p >Tempo de Hora Extra: <b><span id="tempo_he">00:00:00</span></b></p>

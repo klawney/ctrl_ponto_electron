@@ -8,14 +8,23 @@ const { app, BrowserWindow } = require('electron')
 const  createWindow = async () => {
     const win = new BrowserWindow({
       width: 555,
-      height: 400
+      height: 400,
+      //show:false
+      //fullscreenable:false
+      //resizable:false
+      //frame:false
     })
-  
+    
     await win.loadFile('./src/index.html')
   }
-
+  
   app.whenReady().then(() => {
-    createWindow()
+    const tray = require ('./traymode.js')
+    tray.on('click',()=>
+ 
+      createWindow()
+    )
+    //tray()
   })
 
   app.on('window-all-closed', () => {

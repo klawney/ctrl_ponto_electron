@@ -1,5 +1,37 @@
 
 const hoje = new Date()
+let configPonto = {
+        "jornada":6,
+        "intervalo" :.5,
+        "he_autorizada":false,
+        "qtde_he" :null,
+        "saldo_he" :null,
+        "default" : false
+    }
+
+function reconfigurarPonto(configPonto) {
+    localStorage.setItem("configPonto", JSON.stringify(configPonto))
+    leConfigPonto()
+}
+function resetconfigPonto() {
+    configPonto = {
+        "jornada":6,
+        "intervalo" :0,
+        "he_autorizada":false,
+        "qtde_he" :null,
+        "saldo_he" :null,
+        "default" : false
+        }
+}
+function leConfigPonto() {
+    let strConfigPonto = localStorage.getItem("configPonto")
+    // console.log(strConfigPonto,"<<--");
+    // if (!strConfigPonto) {
+    //     //localStorage.clear("configPonto")
+    //     resetconfigPonto()
+    // }
+    configPonto = JSON.parse(strConfigPonto)
+}
 
 let ponto = {
     "data": null,
@@ -72,7 +104,7 @@ function removeRegistro(horas) {
 function carregaPonto() {
     strgPonto = localStorage.getItem("ponto")
     if (!strgPonto) {
-        localStorage.clear("ponto")
+        localStorage.removeItem("ponto")
         resetPonto()
         return
     }
@@ -109,3 +141,4 @@ function Notifica() {
     new Notification(NOTIFICATION_TITLE, { body: NOTIFICATION_BODY })
 }
 
+leConfigPonto()
