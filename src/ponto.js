@@ -104,7 +104,7 @@ function removeRegistro(horas) {
 function carregaPonto() {
     strgPonto = localStorage.getItem("ponto")
     if (!strgPonto) {
-        localStorage.clear("ponto")
+        localStorage.removeItem("ponto")
         resetPonto()
         return
     }
